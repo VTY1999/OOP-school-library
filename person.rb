@@ -1,15 +1,22 @@
 require_relative './interface'
+require_relative './book'
+require_relative './rental'
 
 class Person < Nameable
   attr_accessor :name, :age
-  attr_reader :id
+  attr_reader :id, :rental
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rental = []
     super()
+  end
+
+  def add_rental(book, date)
+    @rental.push(Rental.new(date, self, book)) unless @rental.include?(Rental.new(date, self, book))
   end
 
   def can_use_services?
