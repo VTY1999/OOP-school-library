@@ -7,8 +7,8 @@ require './rental'
 
 class App
   def initialize
-    @persons = []
     @books = []
+    @persons = []
     @rentals = []
   end
 
@@ -26,12 +26,12 @@ class App
   end
 
   def list_of_books
-    puts 'Empty! Please add a book.' if @books.empty?
+    puts 'Empty! Add book.' if @books.empty?
     @books.each { |book| puts "[Book] Title: #{book.title}, Author: #{book.author}" }
   end
 
   def list_of_persons
-    puts 'Empty! Please add a person.' if @persons.empty?
+    puts 'Empty! Add person.' if @persons.empty?
     @persons.each { |person| puts "[#{person.class.name}] Name: #{person.name}, Age: #{person.age}, id: #{person.id}" }
   end
 
@@ -121,7 +121,7 @@ class App
 
     puts 'Rented Books:'
     @rentals.each do |rental|
-      if rental == id
+      if rental.person.id == id
         puts "Peson: #{rental.person.name}  Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
       else
         puts
