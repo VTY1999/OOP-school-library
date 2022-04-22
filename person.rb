@@ -1,5 +1,5 @@
-require_relative './interface'
-require_relative './rental'
+require_relative('./interface')
+require_relative('./rental')
 
 class Person < Nameable
   attr_accessor :name, :age, :rental
@@ -26,8 +26,8 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(date, book, person = self)
-    Rental.new(date, book, person)
+  def add_rental(book, date)
+    Rental.new(date, book, self)
   end
 
   private :of_age?

@@ -121,12 +121,10 @@ class App
 
     puts 'Rented Books:'
     @rentals.each do |rental|
-      if rental.person.id == id
-        puts "Peson: #{rental.person.name}  Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
-      else
-        puts
-        puts 'No records where found for the given ID'
-      end
-    end
-  end
+    if rental.person.id == id
+      puts 'Empty! Add a ID.' if @rentals.empty?
+      @rentals.each { |rental| puts "Peson: #{rental.person.name}  Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}" }
+     end
+   end
+  end 
 end
